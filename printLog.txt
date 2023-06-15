@@ -1,0 +1,288 @@
+Test case 1
+0XF9
+0XA1
+0XF9
+A: -40960.0 B: -0.009765625
+C: -40960.0 result: -40959.990234375
+The value is correct!
+Percentage error: 2.384186359449949e-05
+
+Test case 2
+0X58
+0X2E
+0X58
+A: 128.0 B: 0.09375
+C: 128.0 result: 127.90625
+The value is correct!
+Percentage error: 0.07329587099926704
+
+Test case 3
+0X96
+0XC4
+0X44
+A: -0.00146484375 B: -4.0
+C: 4.0 result: 3.99853515625
+The value is correct!
+Percentage error: 0.03663450970814507
+
+Test case 4
+0XB9
+0XD8
+0X58
+A: -0.625 B: -128.0
+C: 128.0 result: 127.375
+The value is correct!
+Percentage error: 0.49067713444553485
+
+Test case 5
+0X13
+0XB8
+0X38
+A: 0.0008544921875 B: -0.5
+C: 0.5 result: 0.5008544921875
+The value is correct!
+Percentage error: 0.17060687301974164
+
+Test case 6
+0XB4
+0XEF
+0X6F
+A: -0.25 B: -7168.0
+C: 7168.0 result: 7167.75
+The value is correct!
+Percentage error: 0.003487844860660598
+
+Test case 7
+0XD6
+0XBC
+0XD6
+A: -96.0 B: -1.0
+C: -96.0 result: -95.0
+The value is incorrect!
+Percentage error: 1.0526315789473684
+
+Test case 8
+0X82
+0X47
+0XC7
+A: -4.57763671875e-05 B: 7.0
+C: -7.0 result: -7.0000457763671875
+The value is correct!
+Percentage error: 0.0006539438262253272
+
+Test case 9
+0X51
+0X2F
+0X51
+A: 40.0 B: 0.109375
+C: 40.0 result: 39.890625
+The value is correct!
+Percentage error: 0.27418723070896983
+
+Test case 10
+0XB4
+0XEF
+0X6F
+A: -0.25 B: -7168.0
+C: 7168.0 result: 7167.75
+The value is correct!
+Percentage error: 0.003487844860660598
+
+Test case 11
+0X45
+0XD7
+0X57
+A: 5.0 B: -112.0
+C: 112.0 result: 117.0
+The value is incorrect!
+Percentage error: 4.273504273504273
+
+Test case 12
+0X1A
+0X2F
+0XAF
+A: 0.0029296875 B: 0.109375
+C: -0.109375 result: -0.1064453125
+The value is incorrect!
+Percentage error: 2.7522935779816518
+
+Test case 13
+0XC9
+0XA8
+0XC9
+A: -10.0 B: -0.03125
+C: -10.0 result: -9.96875
+The value is correct!
+Percentage error: 0.3134796238244514
+
+Test case 14
+0X74
+0X65
+0X74
+A: 16384.0 B: 1280.0
+C: 16384.0 result: 15104.0
+The value is incorrect!
+Percentage error: 8.47457627118644
+
+Test case 15
+0X57
+0XE9
+0X69
+A: 112.0 B: -2560.0
+C: 2560.0 result: 2672.0
+The value is incorrect!
+Percentage error: 4.191616766467066
+
+Test case 16
+0X81
+0X7E
+0XFE
+A: -3.814697265625e-05 B: 98304.0
+C: -98304.0 result: -98304.00003814697
+The value is correct!
+Percentage error: 3.8805107260586576e-08
+
+Test case 17
+0X13
+0XFA
+0X7A
+A: 0.0008544921875 B: -49152.0
+C: 49152.0 result: 49152.00085449219
+The value is correct!
+Percentage error: 1.738468775726156e-06
+
+Test case 18
+0X36
+0X18
+0X36
+A: 0.375 B: 0.001953125
+C: 0.375 result: 0.373046875
+The value is correct!
+Percentage error: 0.5235602094240838
+
+Test case 19
+0X57
+0X74
+0XF4
+A: 112.0 B: 16384.0
+C: -16384.0 result: -16272.0
+The value is correct!
+Percentage error: 0.688298918387414
+
+Test case 20
+0X82
+0XA9
+0X29
+A: -4.57763671875e-05 B: -0.0390625
+C: 0.0390625 result: 0.0390167236328125
+The value is correct!
+Percentage error: 0.11732499022291748
+
+Test case 21
+0XB8
+0X81
+0XB8
+A: -0.5 B: -3.814697265625e-05
+C: -0.5 result: -0.49996185302734375
+The value is correct!
+Percentage error: 0.007629976652271444
+
+Test case 22
+0XA5
+0XC6
+0X46
+A: -0.01953125 B: -6.0
+C: 6.0 result: 5.98046875
+The value is correct!
+Percentage error: 0.32658393207054215
+
+Test case 23
+0XE3
+0X9A
+0XE3
+A: -896.0 B: -0.0029296875
+C: -896.0 result: -895.9970703125
+The value is correct!
+Percentage error: 0.00032697512046308397
+
+Test case 24
+0XB6
+0X25
+0XB6
+A: -0.375 B: 0.01953125
+C: -0.375 result: -0.39453125
+The value is incorrect!
+Percentage error: 4.9504950495049505
+
+Test case 25
+0X3
+0X89
+0XA
+A: 5.340576171875e-05 B: -0.000152587890625
+C: 0.00018310546875 result: 0.00020599365234375
+The value is incorrect!
+Percentage error: 11.11111111111111
+
+Test case 26
+0XAF
+0X13
+0XAF
+A: -0.109375 B: 0.0008544921875
+C: -0.109375 result: -0.1102294921875
+The value is correct!
+Percentage error: 0.7751937984496124
+
+Test case 27
+0XA6
+0X35
+0XB5
+A: -0.0234375 B: 0.3125
+C: -0.3125 result: -0.3359375
+The value is incorrect!
+Percentage error: 6.976744186046512
+
+Test case 28
+0X6B
+0X7C
+0XFC
+A: 3584.0 B: 65536.0
+C: -65536.0 result: -61952.0
+The value is incorrect!
+Percentage error: 5.785123966942149
+
+Test case 29
+0X51
+0X2F
+0X51
+A: 40.0 B: 0.109375
+C: 40.0 result: 39.890625
+The value is correct!
+Percentage error: 0.27418723070896983
+
+Test case 30
+0X71
+0XA9
+0X71
+A: 10240.0 B: -0.0390625
+C: 10240.0 result: 10240.0390625
+The value is correct!
+Percentage error: 0.0003814682713765283
+
+Test case 31
+0X85
+0XD2
+0X52
+A: -7.62939453125e-05 B: -48.0
+C: 48.0 result: 47.99992370605469
+The value is correct!
+Percentage error: 0.0001589459720388604
+
+Test case 32
+0X7B
+0XEF
+0X7B
+A: 57344.0 B: -7168.0
+C: 57344.0 result: 64512.0
+The value is incorrect!
+Percentage error: 11.11111111111111
+

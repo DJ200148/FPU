@@ -1,0 +1,244 @@
+m255
+K4
+z2
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 5/lab5b/sim
+vbin32ToHex
+Z0 !s110 1686534311
+!i10b 1
+!s100 >gb:K>=j[ZCj_Mgh[5jTP1
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IE]i=hkd@dGfEGmHaYN@ca2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dC:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/sim
+Z4 w1686534168
+Z5 8C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v
+Z6 FC:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v
+!i122 209
+L0 170 37
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1686534311.000000
+!s107 C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+nbin32@to@hex
+vbinToDisplay
+R0
+!i10b 1
+!s100 _zFZC=Hl3AUTY8Vf=6YS^3
+R1
+I;G[deOWQ3Z2Z`U`X;JlXM2
+R2
+R3
+R4
+R5
+R6
+!i122 209
+L0 209 27
+R7
+r1
+!s85 0
+31
+R8
+Z12 !s107 C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v|
+R9
+!i113 1
+R10
+R11
+nbin@to@display
+vde10_lab6
+!s110 1684973796
+!i10b 1
+!s100 6L8SeYb:NlnH60dJEZ5a72
+R1
+I3W_CCNaQQ`JmfGRkL7XFM1
+R2
+R3
+w1684973792
+Z13 8C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v
+Z14 FC:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v
+!i122 22
+L0 2 60
+R7
+r1
+!s85 0
+31
+!s108 1684973795.000000
+Z15 !s107 C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v|
+Z16 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v|
+!i113 1
+R10
+R11
+vfpua
+R0
+!i10b 1
+!s100 W9JLO2K?iTgRL<UzTYQFh2
+R1
+I^KO66VJ?`61fP^4]Ub:S70
+R2
+R3
+R4
+R5
+R6
+!i122 209
+L0 93 71
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+vfpum
+R0
+!i10b 1
+!s100 zaU035N<7>5Tn;S[kzgNN0
+R1
+IJC3Y>UOeB10YOIU]FNnR=2
+R2
+R3
+R4
+R5
+R6
+!i122 209
+L0 60 30
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+vlab6
+R0
+!i10b 1
+!s100 kX@4fl3MVOlD4oETO8a<Q2
+R1
+IIoPMEbOhdkJCF`djXS0Bj1
+R2
+R3
+w1686533980
+R13
+R14
+!i122 208
+L0 1 242
+R7
+r1
+!s85 0
+31
+R8
+R15
+R16
+!i113 1
+R10
+R11
+vram
+R0
+!i10b 1
+!s100 aimJ61SIWSl:F4F<;B5DB2
+R1
+ICZFf4Yi11hIf2Sgdn7iSI0
+R2
+R3
+R4
+R5
+R6
+!i122 209
+L0 39 18
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+vramBlock
+R0
+!i10b 1
+!s100 Jg11;B2A:Ai5;07z40>d[1
+R1
+Im=fm<R_iDV2`b6_Lod5i:1
+R2
+R3
+R4
+R5
+R6
+!i122 209
+L0 2 36
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+nram@block
+vtb_lab6
+R0
+!i10b 1
+!s100 ca@nW`9G[[0K_Mi02Kn[o1
+R1
+INf3FW<YKkV2=o;21ZnP5<0
+R2
+R3
+R4
+R5
+R6
+!i122 209
+L0 240 60
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11
+vtb_lab6resetdebug
+R0
+!i10b 1
+!s100 [AGW?dKdnS]_e:zAP[J[z1
+R1
+IGn@N:[eKYS2fJ^IcQ7gN]2
+R2
+R3
+R4
+R5
+R6
+!i122 209
+L0 301 93
+R7
+r1
+!s85 0
+31
+R8
+R12
+R9
+!i113 1
+R10
+R11

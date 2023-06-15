@@ -1,0 +1,23 @@
+{C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v} {1 {vlog -work work -stats=none {C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ramBlock
+-- Compiling module ram
+-- Compiling module fpum
+-- Compiling module fpua
+-- Compiling module bin32ToHex
+-- Compiling module binToDisplay
+-- Compiling module tb_lab6
+
+Top level modules:
+	fpua
+	bin32ToHex
+	tb_lab6
+
+} {} {}} {C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v} {1 {vlog -work work -stats=none {C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module lab6
+
+Top level modules:
+	lab6
+
+} {} {}}

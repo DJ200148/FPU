@@ -1,0 +1,18 @@
+Fitter Status : Successful - Wed Jun 14 10:16:06 2023
+Quartus Prime Version : 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+Revision Name : lab6
+Top-level Entity Name : lab6
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Final
+Total logic elements : 7,199 / 49,760 ( 14 % )
+    Total combinational functions : 7,199 / 49,760 ( 14 % )
+    Dedicated logic registers : 206 / 49,760 ( < 1 % )
+Total registers : 206
+Total pins : 71 / 360 ( 20 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,677,312 ( 0 % )
+Embedded Multiplier 9-bit elements : 8 / 288 ( 3 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

@@ -1,0 +1,132 @@
+
+
+// Multiplier
+module fpum #(parameter EXPONENT = 30, FRACTION = 22, BIAS = 127) (
+    input [(EXPONENT+1):0] A, B,
+    output reg [(EXPONENT+1):0] C
+);
+ 
+reg [EXPONENT-FRACTION-1:0] exp;
+reg [(FRACTION+1):0] f1, f2;
+reg [((FRACTION+1)*2)+1:0] new_f;
+
+// ALU Procesdures
+always @(*) begin
+    f1 = {1'b1, A[FRACTION:0]};
+	 //$display("f1: %b",f1);
+    f2 = {1'b1, B[FRACTION:0]};
+    //$display("f2: %b",f2);
+	 new_f = f1 * f2;
+	 //$display("new_f: %b",new_f);
+    exp = ((A[EXPONENT:(FRACTION+1)] + B[EXPONENT:(FRACTION+1)]) - BIAS);
+	 //$display("exp: %b",exp);
+	 //$display("fra check: %b", new_f[((FRACTION+1)*2)+1:((FRACTION+1)*2)]);
+    if (new_f[((FRACTION+1)*2)+1:((FRACTION+1)*2)] > 2'b01) begin
+        exp = exp + 1;
+		  //$display("Incremented exp: %b", exp);
+		  //$display("f to replace: %b", new_f[((FRACTION+1)*2):FRACTION+1]);
+		  C[FRACTION:0] = new_f[((FRACTION+1)*2):FRACTION+1];
+    end else begin
+		  C[FRACTION:0] = new_f[((FRACTION+1)*2)-1:FRACTION+1];
+	 end
+
+    C[EXPONENT+1] = A[EXPONENT + 1] ^ B[EXPONENT + 1];
+    C[EXPONENT:(FRACTION+1)] = exp;
+end
+
+endmodule
+
+
+module bin32ToHex(
+	input [31:0] bin,
+	input lower,
+	output reg [47:0] hexout
+	);
+	
+	reg [23:0] into;
+	wire [47:0] hex;
+	
+	binToDisplay hex0(.bin(into[3:0]), .hex(hex[7:0]));
+	binToDisplay hex1(.bin(into[7:4]), .hex(hex[15:8]));
+	binToDisplay hex2(.bin(into[11:8]), .hex(hex[23:16]));
+	binToDisplay hex3(.bin(into[15:12]), .hex(hex[31:24]));
+	binToDisplay hex4(.bin(into[19:16]), .hex(hex[39:32]));
+	binToDisplay hex5(.bin(into[23:20]), .hex(hex[47:40]));
+	
+	always @(*) begin
+		into = lower ? {16'b0, bin[7:0]} : bin[31:8];
+		hexout = lower ? {32'b11111111111111111111111111111111, hex[15:0]} : hex[47:0];
+	end
+endmodule
+
+
+module binToDisplay (
+	input [3:0] bin,
+	output reg[7:0] hex
+	);
+	always @(*) begin
+	case(bin[3:0]) // HEX#
+			4'b0000: hex = 8'b11000000; // 0
+			4'b0001: hex = 8'b11111001; // 1
+			4'b0010: hex = 8'b10100100; // 2
+			4'b0011: hex = 8'b10110000; // 3
+			4'b0100: hex = 8'b10011001; // 4
+			4'b0101: hex = 8'b10010010; // 5
+			4'b0110: hex = 8'b10000010; // 6
+			4'b0111: hex = 8'b11111000; // 7
+			4'b1000: hex = 8'b10000000; // 8
+			4'b1001: hex = 8'b10010000; // 9
+			4'b1010: hex = 8'b10001000; // A
+			4'b1011: hex = 8'b10000011; // b
+			4'b1100: hex = 8'b11000110; // C
+			4'b1101: hex = 8'b10100001; // d
+			4'b1110: hex = 8'b10000110; // E
+			4'b1111: hex = 8'b10001110; // F
+			4'bxxxx: hex = 8'b11111111; // Displays nothing
+			default: hex = 8'b11111111; // Displays nothing
+		endcase
+	end
+endmodule
+
+
+
+// 32 bit test bench
+module tb_lab6;
+//module lab6;
+
+	parameter BIAS = 127;
+	parameter EXPONENT = 30;
+	parameter FRACTION = 22;
+	parameter LOOPS = 100;
+	parameter FLOATLEN = EXPONENT +1;
+
+
+	reg [EXPONENT+1:0] A, B;
+	wire [EXPONENT+1:0] C;
+	reg [10:0] count;
+
+	fpum #(EXPONENT, FRACTION, BIAS) FPU1(
+		.A(A),
+		.B(B),
+		.C(C)
+	);
+
+	initial begin
+		/*
+		A = 'b01000000110100000000000000000000; // 6.5
+		B = 'b01000000000100000000000000000000; // 2.25
+		//0 10000010 11010100000000000000000 Correct
+		#10;
+		$display("C: %b Correct: %b", C);
+		*/
+		
+		for (count = 0; count < LOOPS; count = count + 1) begin
+        A = $random;
+        B = $random;
+        #10;
+		  
+        $display("A %b %b %b   B: %b %b %b   C: %b %b %b", A[EXPONENT+1], A[EXPONENT:FRACTION+1], A[FRACTION:0], B[EXPONENT+1], B[EXPONENT:FRACTION+1], B[FRACTION:0], C[EXPONENT+1], C[EXPONENT:FRACTION+1], C[FRACTION:0] );
+		end
+		#10 $finish;
+	end
+endmodule

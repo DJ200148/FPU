@@ -1,0 +1,1558 @@
+Analysis & Synthesis report for lab6
+Wed Jun 14 10:15:41 2023
+Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |lab6|state
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |lab6
+ 14. Parameter Settings for User Entity Instance: fpum:FPU0
+ 15. Parameter Settings for User Entity Instance: fpua:FPU1
+ 16. Parameter Settings for User Entity Instance: fpua:FPU2
+ 17. Parameter Settings for User Entity Instance: fpum:FPU3
+ 18. Parameter Settings for User Entity Instance: fpua:FPU4
+ 19. Parameter Settings for User Entity Instance: fpua:FPU5
+ 20. Parameter Settings for User Entity Instance: fpum:FPU6
+ 21. Parameter Settings for User Entity Instance: fpua:FPU7
+ 22. Parameter Settings for User Entity Instance: fpua:FPU8
+ 23. Parameter Settings for User Entity Instance: fpum:FPU9
+ 24. Parameter Settings for User Entity Instance: fpua:FPU10
+ 25. Parameter Settings for User Entity Instance: fpua:FPU11
+ 26. Parameter Settings for User Entity Instance: ramBlock:RAM
+ 27. Parameter Settings for User Entity Instance: ramBlock:RAM|ram:RAM0
+ 28. Parameter Settings for Inferred Entity Instance: fpum:FPU3|lpm_mult:Mult0
+ 29. Parameter Settings for Inferred Entity Instance: fpua:FPU5|lpm_add_sub:Add3
+ 30. Parameter Settings for Inferred Entity Instance: fpum:FPU6|lpm_mult:Mult0
+ 31. Parameter Settings for Inferred Entity Instance: fpum:FPU0|lpm_mult:Mult0
+ 32. Parameter Settings for Inferred Entity Instance: fpua:FPU2|lpm_add_sub:Add3
+ 33. Parameter Settings for Inferred Entity Instance: fpum:FPU9|lpm_mult:Mult0
+ 34. lpm_mult Parameter Settings by Entity Instance
+ 35. Port Connectivity Checks: "fpua:FPU11"
+ 36. Port Connectivity Checks: "fpua:FPU10"
+ 37. Port Connectivity Checks: "fpum:FPU9"
+ 38. Port Connectivity Checks: "fpua:FPU8"
+ 39. Port Connectivity Checks: "fpua:FPU7"
+ 40. Port Connectivity Checks: "fpum:FPU6"
+ 41. Port Connectivity Checks: "fpua:FPU5"
+ 42. Port Connectivity Checks: "fpua:FPU4"
+ 43. Port Connectivity Checks: "fpua:FPU2"
+ 44. Port Connectivity Checks: "fpua:FPU1"
+ 45. Post-Synthesis Netlist Statistics for Top Partition
+ 46. Elapsed Time Per Partition
+ 47. Analysis & Synthesis Messages
+ 48. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jun 14 10:15:41 2023          ;
+; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
+; Revision Name                      ; lab6                                           ;
+; Top-level Entity Name              ; lab6                                           ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 7,198                                          ;
+;     Total combinational functions  ; 7,198                                          ;
+;     Dedicated logic registers      ; 206                                            ;
+; Total registers                    ; 206                                            ;
+; Total pins                         ; 71                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 8                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; lab6               ; lab6               ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                         ;
++----------------------------------+-----------------+---------------------------------------------+-----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                                   ; File Name with Absolute Path                                                      ; Library ;
++----------------------------------+-----------------+---------------------------------------------+-----------------------------------------------------------------------------------+---------+
+; Verilog1.v                       ; yes             ; User Verilog HDL File                       ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v                     ;         ;
+; ram_content.hex                  ; yes             ; Auto-Found Hexadecimal (Intel-Format) File  ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/ram_content.hex                ;         ;
+; lab6.v                           ; yes             ; Auto-Found Verilog HDL File                 ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v                         ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mult.tdf            ;         ;
+; aglobal221.inc                   ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/aglobal221.inc          ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_add_sub.inc         ;         ;
+; multcore.inc                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/multcore.inc            ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/bypassff.inc            ;         ;
+; altshift.inc                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altshift.inc            ;         ;
+; db/mult_0ls.tdf                  ; yes             ; Auto-Generated Megafunction                 ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/mult_0ls.tdf                ;         ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_add_sub.tdf         ;         ;
+; addcore.inc                      ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/addcore.inc             ;         ;
+; look_add.inc                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/look_add.inc            ;         ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/alt_stratix_add_sub.inc ;         ;
+; db/add_sub_29i.tdf               ; yes             ; Auto-Generated Megafunction                 ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/add_sub_29i.tdf             ;         ;
+; db/mult_9js.tdf                  ; yes             ; Auto-Generated Megafunction                 ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/mult_9js.tdf                ;         ;
+; db/mult_1os.tdf                  ; yes             ; Auto-Generated Megafunction                 ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/mult_1os.tdf                ;         ;
+; db/add_sub_gai.tdf               ; yes             ; Auto-Generated Megafunction                 ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/add_sub_gai.tdf             ;         ;
+; multcore.tdf                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/multcore.tdf            ;         ;
+; csa_add.inc                      ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/csa_add.inc             ;         ;
+; mpar_add.inc                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/mpar_add.inc            ;         ;
+; muleabz.inc                      ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/muleabz.inc             ;         ;
+; mul_lfrg.inc                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/mul_lfrg.inc            ;         ;
+; mul_boothc.inc                   ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/mul_boothc.inc          ;         ;
+; alt_ded_mult.inc                 ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/alt_ded_mult.inc        ;         ;
+; alt_ded_mult_y.inc               ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/alt_ded_mult_y.inc      ;         ;
+; dffpipe.inc                      ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/dffpipe.inc             ;         ;
+; mpar_add.tdf                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/mpar_add.tdf            ;         ;
+; db/add_sub_8mg.tdf               ; yes             ; Auto-Generated Megafunction                 ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/add_sub_8mg.tdf             ;         ;
+; db/add_sub_9mg.tdf               ; yes             ; Auto-Generated Megafunction                 ; C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/add_sub_9mg.tdf             ;         ;
+; altshift.tdf                     ; yes             ; Megafunction                                ; c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altshift.tdf            ;         ;
++----------------------------------+-----------------+---------------------------------------------+-----------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 7,198       ;
+;                                             ;             ;
+; Total combinational functions               ; 7198        ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 4117        ;
+;     -- 3 input functions                    ; 2273        ;
+;     -- <=2 input functions                  ; 808         ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 5747        ;
+;     -- arithmetic mode                      ; 1451        ;
+;                                             ;             ;
+; Total registers                             ; 206         ;
+;     -- Dedicated logic registers            ; 206         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 71          ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 8           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; SW[9]~input ;
+; Maximum fan-out                             ; 210         ;
+; Total fan-out                               ; 25656       ;
+; Average fan-out                             ; 3.40        ;
++---------------------------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                           ;
++---------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+--------------+
+; Compilation Hierarchy Node                        ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                    ; Entity Name  ; Library Name ;
++---------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+--------------+
+; |lab6                                             ; 7198 (1754)         ; 206 (71)                  ; 0           ; 0          ; 8            ; 2       ; 3         ; 71   ; 0            ; 0          ; |lab6                                                                                                                                  ; lab6         ; work         ;
+;    |bin32ToHex:converter|                         ; 109 (67)            ; 66 (66)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|bin32ToHex:converter                                                                                                             ; bin32ToHex   ; work         ;
+;       |binToDisplay:hex0|                         ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|bin32ToHex:converter|binToDisplay:hex0                                                                                           ; binToDisplay ; work         ;
+;       |binToDisplay:hex1|                         ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|bin32ToHex:converter|binToDisplay:hex1                                                                                           ; binToDisplay ; work         ;
+;       |binToDisplay:hex2|                         ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|bin32ToHex:converter|binToDisplay:hex2                                                                                           ; binToDisplay ; work         ;
+;       |binToDisplay:hex3|                         ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|bin32ToHex:converter|binToDisplay:hex3                                                                                           ; binToDisplay ; work         ;
+;       |binToDisplay:hex4|                         ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|bin32ToHex:converter|binToDisplay:hex4                                                                                           ; binToDisplay ; work         ;
+;       |binToDisplay:hex5|                         ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|bin32ToHex:converter|binToDisplay:hex5                                                                                           ; binToDisplay ; work         ;
+;    |fpua:FPU10|                                   ; 255 (255)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU10                                                                                                                       ; fpua         ; work         ;
+;    |fpua:FPU11|                                   ; 359 (359)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU11                                                                                                                       ; fpua         ; work         ;
+;    |fpua:FPU1|                                    ; 1498 (1498)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU1                                                                                                                        ; fpua         ; work         ;
+;    |fpua:FPU2|                                    ; 1321 (1272)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU2                                                                                                                        ; fpua         ; work         ;
+;       |lpm_add_sub:Add3|                          ; 49 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU2|lpm_add_sub:Add3                                                                                                       ; lpm_add_sub  ; work         ;
+;          |add_sub_gai:auto_generated|             ; 49 (49)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU2|lpm_add_sub:Add3|add_sub_gai:auto_generated                                                                            ; add_sub_gai  ; work         ;
+;    |fpua:FPU4|                                    ; 510 (510)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU4                                                                                                                        ; fpua         ; work         ;
+;    |fpua:FPU5|                                    ; 547 (530)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU5                                                                                                                        ; fpua         ; work         ;
+;       |lpm_add_sub:Add3|                          ; 17 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU5|lpm_add_sub:Add3                                                                                                       ; lpm_add_sub  ; work         ;
+;          |add_sub_29i:auto_generated|             ; 17 (17)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU5|lpm_add_sub:Add3|add_sub_29i:auto_generated                                                                            ; add_sub_29i  ; work         ;
+;    |fpua:FPU7|                                    ; 176 (176)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU7                                                                                                                        ; fpua         ; work         ;
+;    |fpua:FPU8|                                    ; 119 (119)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpua:FPU8                                                                                                                        ; fpua         ; work         ;
+;    |fpum:FPU0|                                    ; 83 (28)             ; 0 (0)                     ; 0           ; 0          ; 7            ; 1       ; 3         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU0                                                                                                                        ; fpum         ; work         ;
+;       |lpm_mult:Mult0|                            ; 55 (0)              ; 0 (0)                     ; 0           ; 0          ; 7            ; 1       ; 3         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU0|lpm_mult:Mult0                                                                                                         ; lpm_mult     ; work         ;
+;          |mult_1os:auto_generated|                ; 55 (55)             ; 0 (0)                     ; 0           ; 0          ; 7            ; 1       ; 3         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU0|lpm_mult:Mult0|mult_1os:auto_generated                                                                                 ; mult_1os     ; work         ;
+;    |fpum:FPU3|                                    ; 23 (23)             ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU3                                                                                                                        ; fpum         ; work         ;
+;       |lpm_mult:Mult0|                            ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU3|lpm_mult:Mult0                                                                                                         ; lpm_mult     ; work         ;
+;          |mult_0ls:auto_generated|                ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 1            ; 1       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU3|lpm_mult:Mult0|mult_0ls:auto_generated                                                                                 ; mult_0ls     ; work         ;
+;    |fpum:FPU6|                                    ; 41 (12)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU6                                                                                                                        ; fpum         ; work         ;
+;       |lpm_mult:Mult0|                            ; 29 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU6|lpm_mult:Mult0                                                                                                         ; lpm_mult     ; work         ;
+;          |mult_9js:auto_generated|                ; 29 (29)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU6|lpm_mult:Mult0|mult_9js:auto_generated                                                                                 ; mult_9js     ; work         ;
+;    |fpum:FPU9|                                    ; 32 (17)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9                                                                                                                        ; fpum         ; work         ;
+;       |lpm_mult:Mult0|                            ; 15 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9|lpm_mult:Mult0                                                                                                         ; lpm_mult     ; work         ;
+;          |multcore:mult_core|                     ; 15 (7)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9|lpm_mult:Mult0|multcore:mult_core                                                                                      ; multcore     ; work         ;
+;             |mpar_add:padder|                     ; 8 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder                                                                      ; mpar_add     ; work         ;
+;                |lpm_add_sub:adder[0]|             ; 4 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ; lpm_add_sub  ; work         ;
+;                   |add_sub_8mg:auto_generated|    ; 4 (4)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_8mg:auto_generated                      ; add_sub_8mg  ; work         ;
+;                |mpar_add:sub_par_add|             ; 4 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ; mpar_add     ; work         ;
+;                   |lpm_add_sub:adder[0]|          ; 4 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ; lpm_add_sub  ; work         ;
+;                      |add_sub_9mg:auto_generated| ; 4 (4)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_9mg:auto_generated ; add_sub_9mg  ; work         ;
+;    |ramBlock:RAM|                                 ; 371 (192)           ; 69 (69)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|ramBlock:RAM                                                                                                                     ; ramBlock     ; work         ;
+;       |ram:RAM0|                                  ; 179 (179)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |lab6|ramBlock:RAM|ram:RAM0                                                                                                            ; ram          ; work         ;
++---------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------------------------------------------------------------------------------------------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 2           ;
+; Simple Multipliers (18-bit)           ; 3           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 8           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 5           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------+
+; State Machine - |lab6|state               ;
++----------+----------+----------+----------+
+; Name     ; state.S3 ; state.S1 ; state.S2 ;
++----------+----------+----------+----------+
+; state.S1 ; 0        ; 0        ; 0        ;
+; state.S2 ; 0        ; 1        ; 1        ;
+; state.S3 ; 1        ; 1        ; 0        ;
++----------+----------+----------+----------+
+
+
++------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                       ;
++--------------------------------------------+---------------------------------------------+
+; Register name                              ; Reason for Removal                          ;
++--------------------------------------------+---------------------------------------------+
+; bin32ToHex:converter|hexout[7,23,31,39,47] ; Merged with bin32ToHex:converter|hexout[15] ;
+; bin32ToHex:converter|hexout[15]            ; Stuck at VCC due to stuck port data_in      ;
+; Total Number of Removed Registers = 6      ;                                             ;
++--------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 206   ;
+; Number of registers using Synchronous Clear  ; 18    ;
+; Number of registers using Synchronous Load   ; 22    ;
+; Number of registers using Asynchronous Clear ; 69    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 90    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |lab6|bin32ToHex:converter|into[19]   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |lab6|bin32ToHex:converter|into[2]    ;
+; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |lab6|bin32ToHex:converter|hexout[38] ;
+; 4:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |lab6|bin32ToHex:converter|hexout[5]  ;
+; 4:1                ; 34 bits   ; 68 LEs        ; 34 LEs               ; 34 LEs                 ; Yes        ; |lab6|timer_count[33]                 ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lab6|bin32ToHex:converter|into[12]   ;
+; 74:1               ; 8 bits    ; 392 LEs       ; 368 LEs              ; 24 LEs                 ; Yes        ; |lab6|C[23]                           ;
+; 75:1               ; 6 bits    ; 300 LEs       ; 288 LEs              ; 12 LEs                 ; Yes        ; |lab6|C[18]                           ;
+; 149:1              ; 7 bits    ; 693 LEs       ; 644 LEs              ; 49 LEs                 ; Yes        ; |lab6|C[13]                           ;
+; 297:1              ; 2 bits    ; 396 LEs       ; 372 LEs              ; 24 LEs                 ; Yes        ; |lab6|C[5]                            ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |lab6|state                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU2|Add70                 ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|f2                    ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|f1                    ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|new_f                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU7|exp1                  ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|f2                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|f1                    ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|exp1                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU4|new_f                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|new_f                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU10|exp1                 ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |lab6|fpua:FPU1|f2                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |lab6|fpua:FPU1|f1                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |lab6|fpua:FPU7|f2                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |lab6|fpua:FPU7|f1                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |lab6|fpua:FPU4|f2                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |lab6|fpua:FPU4|f1                    ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|f2                    ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|f1                    ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |lab6|fpua:FPU4|f2                    ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |lab6|fpua:FPU4|f1                    ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|f2                    ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |lab6|fpua:FPU1|f1                    ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |lab6|fpua:FPU1|f2                    ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |lab6|fpua:FPU1|f1                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |lab6 ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; S0             ; 00    ; Unsigned Binary                             ;
+; S1             ; 01    ; Unsigned Binary                             ;
+; S2             ; 10    ; Unsigned Binary                             ;
+; S3             ; 11    ; Unsigned Binary                             ;
+; BIAS32         ; 127   ; Signed Integer                              ;
+; EXPONENT32     ; 30    ; Signed Integer                              ;
+; FRACTION32     ; 22    ; Signed Integer                              ;
+; BIAS16         ; 127   ; Signed Integer                              ;
+; EXPONENT16     ; 14    ; Signed Integer                              ;
+; FRACTION16     ; 6     ; Signed Integer                              ;
+; E4M3BIAS8      ; 7     ; Signed Integer                              ;
+; E4M3EXPONENT8  ; 6     ; Signed Integer                              ;
+; E4M3FRACTION8  ; 2     ; Signed Integer                              ;
+; E5M2BIAS8      ; 15    ; Signed Integer                              ;
+; E5M2EXPONENT8  ; 6     ; Signed Integer                              ;
+; E5M2FRACTION8  ; 1     ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpum:FPU0 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 30    ; Signed Integer                ;
+; FRACTION       ; 22    ; Signed Integer                ;
+; BIAS           ; 127   ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpua:FPU1 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 30    ; Signed Integer                ;
+; FRACTION       ; 22    ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpua:FPU2 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 30    ; Signed Integer                ;
+; FRACTION       ; 22    ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpum:FPU3 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 14    ; Signed Integer                ;
+; FRACTION       ; 6     ; Signed Integer                ;
+; BIAS           ; 127   ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpua:FPU4 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 14    ; Signed Integer                ;
+; FRACTION       ; 6     ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpua:FPU5 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 14    ; Signed Integer                ;
+; FRACTION       ; 6     ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpum:FPU6 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 6     ; Signed Integer                ;
+; FRACTION       ; 2     ; Signed Integer                ;
+; BIAS           ; 7     ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpua:FPU7 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 6     ; Signed Integer                ;
+; FRACTION       ; 2     ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpua:FPU8 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 6     ; Signed Integer                ;
+; FRACTION       ; 2     ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpum:FPU9 ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; EXPONENT       ; 6     ; Signed Integer                ;
+; FRACTION       ; 1     ; Signed Integer                ;
+; BIAS           ; 15    ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpua:FPU10 ;
++----------------+-------+--------------------------------+
+; Parameter Name ; Value ; Type                           ;
++----------------+-------+--------------------------------+
+; EXPONENT       ; 6     ; Signed Integer                 ;
+; FRACTION       ; 1     ; Signed Integer                 ;
++----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpua:FPU11 ;
++----------------+-------+--------------------------------+
+; Parameter Name ; Value ; Type                           ;
++----------------+-------+--------------------------------+
+; EXPONENT       ; 6     ; Signed Integer                 ;
+; FRACTION       ; 1     ; Signed Integer                 ;
++----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ramBlock:RAM ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; DATA_WIDTH     ; 64    ; Signed Integer                   ;
+; ADDR_WIDTH     ; 5     ; Signed Integer                   ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ramBlock:RAM|ram:RAM0 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; DATA_WIDTH     ; 64    ; Signed Integer                            ;
+; ADDR_WIDTH     ; 5     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fpum:FPU3|lpm_mult:Mult0       ;
++------------------------------------------------+----------+---------------------+
+; Parameter Name                                 ; Value    ; Type                ;
++------------------------------------------------+----------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 8        ; Untyped             ;
+; LPM_WIDTHB                                     ; 8        ; Untyped             ;
+; LPM_WIDTHP                                     ; 16       ; Untyped             ;
+; LPM_WIDTHR                                     ; 16       ; Untyped             ;
+; LPM_WIDTHS                                     ; 1        ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED ; Untyped             ;
+; LPM_PIPELINE                                   ; 0        ; Untyped             ;
+; LATENCY                                        ; 0        ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped             ;
+; USE_EAB                                        ; OFF      ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped             ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_0ls ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped             ;
++------------------------------------------------+----------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fpua:FPU5|lpm_add_sub:Add3 ;
++------------------------+-------------+--------------------------------------+
+; Parameter Name         ; Value       ; Type                                 ;
++------------------------+-------------+--------------------------------------+
+; LPM_WIDTH              ; 8           ; Untyped                              ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                              ;
+; LPM_DIRECTION          ; DEFAULT     ; Untyped                              ;
+; ONE_INPUT_IS_CONSTANT  ; NO          ; Untyped                              ;
+; LPM_PIPELINE           ; 0           ; Untyped                              ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                              ;
+; REGISTERED_AT_END      ; 0           ; Untyped                              ;
+; OPTIMIZE_FOR_SPEED     ; 5           ; Untyped                              ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                              ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                              ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                   ;
+; DEVICE_FAMILY          ; MAX 10      ; Untyped                              ;
+; USE_WYS                ; OFF         ; Untyped                              ;
+; STYLE                  ; FAST        ; Untyped                              ;
+; CBXI_PARAMETER         ; add_sub_29i ; Untyped                              ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                       ;
++------------------------+-------------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fpum:FPU6|lpm_mult:Mult0       ;
++------------------------------------------------+----------+---------------------+
+; Parameter Name                                 ; Value    ; Type                ;
++------------------------------------------------+----------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 4        ; Untyped             ;
+; LPM_WIDTHB                                     ; 4        ; Untyped             ;
+; LPM_WIDTHP                                     ; 8        ; Untyped             ;
+; LPM_WIDTHR                                     ; 8        ; Untyped             ;
+; LPM_WIDTHS                                     ; 1        ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED ; Untyped             ;
+; LPM_PIPELINE                                   ; 0        ; Untyped             ;
+; LATENCY                                        ; 0        ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped             ;
+; USE_EAB                                        ; OFF      ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped             ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_9js ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped             ;
++------------------------------------------------+----------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fpum:FPU0|lpm_mult:Mult0       ;
++------------------------------------------------+----------+---------------------+
+; Parameter Name                                 ; Value    ; Type                ;
++------------------------------------------------+----------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 24       ; Untyped             ;
+; LPM_WIDTHB                                     ; 24       ; Untyped             ;
+; LPM_WIDTHP                                     ; 48       ; Untyped             ;
+; LPM_WIDTHR                                     ; 48       ; Untyped             ;
+; LPM_WIDTHS                                     ; 1        ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED ; Untyped             ;
+; LPM_PIPELINE                                   ; 0        ; Untyped             ;
+; LATENCY                                        ; 0        ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped             ;
+; USE_EAB                                        ; OFF      ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped             ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_1os ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped             ;
++------------------------------------------------+----------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fpua:FPU2|lpm_add_sub:Add3 ;
++------------------------+-------------+--------------------------------------+
+; Parameter Name         ; Value       ; Type                                 ;
++------------------------+-------------+--------------------------------------+
+; LPM_WIDTH              ; 24          ; Untyped                              ;
+; LPM_REPRESENTATION     ; UNSIGNED    ; Untyped                              ;
+; LPM_DIRECTION          ; DEFAULT     ; Untyped                              ;
+; ONE_INPUT_IS_CONSTANT  ; NO          ; Untyped                              ;
+; LPM_PIPELINE           ; 0           ; Untyped                              ;
+; MAXIMIZE_SPEED         ; 5           ; Untyped                              ;
+; REGISTERED_AT_END      ; 0           ; Untyped                              ;
+; OPTIMIZE_FOR_SPEED     ; 5           ; Untyped                              ;
+; USE_CS_BUFFERS         ; 1           ; Untyped                              ;
+; CARRY_CHAIN            ; MANUAL      ; Untyped                              ;
+; CARRY_CHAIN_LENGTH     ; 48          ; CARRY_CHAIN_LENGTH                   ;
+; DEVICE_FAMILY          ; MAX 10      ; Untyped                              ;
+; USE_WYS                ; OFF         ; Untyped                              ;
+; STYLE                  ; FAST        ; Untyped                              ;
+; CBXI_PARAMETER         ; add_sub_gai ; Untyped                              ;
+; AUTO_CARRY_CHAINS      ; ON          ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF         ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS    ; ON          ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF         ; IGNORE_CASCADE                       ;
++------------------------+-------------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fpum:FPU9|lpm_mult:Mult0       ;
++------------------------------------------------+----------+---------------------+
+; Parameter Name                                 ; Value    ; Type                ;
++------------------------------------------------+----------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 3        ; Untyped             ;
+; LPM_WIDTHB                                     ; 3        ; Untyped             ;
+; LPM_WIDTHP                                     ; 6        ; Untyped             ;
+; LPM_WIDTHR                                     ; 6        ; Untyped             ;
+; LPM_WIDTHS                                     ; 1        ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED ; Untyped             ;
+; LPM_PIPELINE                                   ; 0        ; Untyped             ;
+; LATENCY                                        ; 0        ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped             ;
+; USE_EAB                                        ; OFF      ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped             ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped             ;
+; CBXI_PARAMETER                                 ; NOTHING  ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped             ;
++------------------------------------------------+----------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                   ;
++---------------------------------------+--------------------------+
+; Name                                  ; Value                    ;
++---------------------------------------+--------------------------+
+; Number of entity instances            ; 4                        ;
+; Entity Instance                       ; fpum:FPU3|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 8                        ;
+;     -- LPM_WIDTHB                     ; 8                        ;
+;     -- LPM_WIDTHP                     ; 16                       ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                 ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                       ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                       ;
+;     -- USE_EAB                        ; OFF                      ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                     ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                       ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                       ;
+; Entity Instance                       ; fpum:FPU6|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 4                        ;
+;     -- LPM_WIDTHB                     ; 4                        ;
+;     -- LPM_WIDTHP                     ; 8                        ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                 ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                       ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                       ;
+;     -- USE_EAB                        ; OFF                      ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                     ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                       ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                       ;
+; Entity Instance                       ; fpum:FPU0|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 24                       ;
+;     -- LPM_WIDTHB                     ; 24                       ;
+;     -- LPM_WIDTHP                     ; 48                       ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                 ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                       ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                       ;
+;     -- USE_EAB                        ; OFF                      ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                     ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                       ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                       ;
+; Entity Instance                       ; fpum:FPU9|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 3                        ;
+;     -- LPM_WIDTHB                     ; 3                        ;
+;     -- LPM_WIDTHP                     ; 6                        ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                 ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                       ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                       ;
+;     -- USE_EAB                        ; OFF                      ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                     ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                       ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                       ;
++---------------------------------------+--------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpua:FPU11"                                                                                                                                                                             ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; A          ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; B          ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpua:FPU10"                                                                                                                                                                             ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; A          ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; B          ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpum:FPU9"                                                                                                                                                                        ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; A    ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; B    ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpua:FPU8"                                                                                                                                                                              ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; A          ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; B          ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpua:FPU7"                                                                                                                                                                              ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; A          ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; B          ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpum:FPU6"                                                                                                                                                                        ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; A    ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; B    ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (8 bits) it drives.  The 24 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpua:FPU5"                                                                                                                                                                              ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; addsub     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpua:FPU4"                                                                                                                                                                              ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; addsub     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpua:FPU2"                                                                                                                                                                              ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; addsub     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fpua:FPU1"                                                                                                                                                                              ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; addsub     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addsub[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
++------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 71                          ;
+; cycloneiii_ff         ; 206                         ;
+;     CLR               ; 69                          ;
+;     ENA               ; 72                          ;
+;     ENA SCLR          ; 10                          ;
+;     ENA SCLR SLD      ; 7                           ;
+;     ENA SLD           ; 1                           ;
+;     SCLR              ; 1                           ;
+;     SLD               ; 14                          ;
+;     plain             ; 32                          ;
+; cycloneiii_lcell_comb ; 7200                        ;
+;     arith             ; 1451                        ;
+;         2 data inputs ; 401                         ;
+;         3 data inputs ; 1050                        ;
+;     normal            ; 5749                        ;
+;         0 data inputs ; 8                           ;
+;         1 data inputs ; 66                          ;
+;         2 data inputs ; 335                         ;
+;         3 data inputs ; 1223                        ;
+;         4 data inputs ; 4117                        ;
+; cycloneiii_mac_mult   ; 5                           ;
+; cycloneiii_mac_out    ; 5                           ;
+;                       ;                             ;
+; Max LUT depth         ; 77.00                       ;
+; Average LUT depth     ; 49.93                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:01:09     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
+    Info: Processing started: Wed Jun 14 10:14:20 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab6 -c lab6
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 8 design units, including 8 entities, in source file verilog1.v
+    Info (12023): Found entity 1: ramBlock File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 2
+    Info (12023): Found entity 2: ram File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 39
+    Info (12023): Found entity 3: fpum File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 60
+    Info (12023): Found entity 4: fpua File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 95
+    Info (12023): Found entity 5: bin32ToHex File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 172
+    Info (12023): Found entity 6: binToDisplay File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 211
+    Info (12023): Found entity 7: tb_lab6 File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 242
+    Info (12023): Found entity 8: tb_lab6resetdebug File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 303
+Warning (10222): Verilog HDL Parameter Declaration warning at Verilog1.v(65): Parameter Declaration in module "fpum" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 65
+Warning (12125): Using design file lab6.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: lab6 File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 1
+Info (12127): Elaborating entity "lab6" for the top level hierarchy
+Warning (10034): Output port "LEDR" at lab6.v(10) has no driver File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+Info (12128): Elaborating entity "fpum" for hierarchy "fpum:FPU0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 59
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(80): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 80
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(83): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 83
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "f1", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "f2", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "new_f", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "exp", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Info (12128): Elaborating entity "fpua" for hierarchy "fpua:FPU1" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 66
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(130): truncated value with size 32 to match size of target (24) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(137): truncated value with size 32 to match size of target (24) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 137
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(154): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 154
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(157): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 157
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(159): truncated value with size 32 to match size of target (9) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 159
+Info (12128): Elaborating entity "fpum" for hierarchy "fpum:FPU3" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 88
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(80): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 80
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(83): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 83
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "f1", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "f2", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "new_f", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "exp", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Info (12128): Elaborating entity "fpua" for hierarchy "fpua:FPU4" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 95
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(130): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(137): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 137
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(154): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 154
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(157): truncated value with size 32 to match size of target (8) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 157
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(159): truncated value with size 32 to match size of target (9) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 159
+Info (12128): Elaborating entity "fpum" for hierarchy "fpum:FPU6" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 117
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(80): truncated value with size 32 to match size of target (4) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 80
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(83): truncated value with size 32 to match size of target (4) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 83
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "f1", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "f2", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "new_f", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "exp", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Info (12128): Elaborating entity "fpua" for hierarchy "fpua:FPU7" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 124
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(130): truncated value with size 32 to match size of target (4) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(137): truncated value with size 32 to match size of target (4) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 137
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(154): truncated value with size 32 to match size of target (4) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 154
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(157): truncated value with size 32 to match size of target (4) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 157
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(159): truncated value with size 32 to match size of target (9) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 159
+Info (12128): Elaborating entity "fpum" for hierarchy "fpum:FPU9" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 145
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(80): truncated value with size 32 to match size of target (5) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 80
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(83): truncated value with size 32 to match size of target (5) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 83
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "f1", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "f2", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "new_f", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Warning (10240): Verilog HDL Always Construct warning at Verilog1.v(72): inferring latch(es) for variable "exp", which holds its previous value in one or more paths through the always construct File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 72
+Info (12128): Elaborating entity "fpua" for hierarchy "fpua:FPU10" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 152
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(130): truncated value with size 32 to match size of target (3) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(137): truncated value with size 32 to match size of target (3) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 137
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(154): truncated value with size 32 to match size of target (5) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 154
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(157): truncated value with size 32 to match size of target (5) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 157
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(159): truncated value with size 32 to match size of target (9) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 159
+Info (12128): Elaborating entity "bin32ToHex" for hierarchy "bin32ToHex:converter" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 170
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(198): truncated value with size 32 to match size of target (24) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 198
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(201): truncated value with size 32 to match size of target (24) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 201
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(204): truncated value with size 32 to match size of target (24) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 204
+Info (12128): Elaborating entity "binToDisplay" for hierarchy "bin32ToHex:converter|binToDisplay:hex0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 184
+Warning (10059): Verilog HDL Case Statement warning at Verilog1.v(233): case item expression never matches the case expression because it contains an 'x' or 'z' value File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 233
+Info (12128): Elaborating entity "ramBlock" for hierarchy "ramBlock:RAM" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 178
+Warning (10230): Verilog HDL assignment warning at Verilog1.v(33): truncated value with size 32 to match size of target (5) File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 33
+Info (12128): Elaborating entity "ram" for hierarchy "ramBlock:RAM|ram:RAM0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 21
+Warning (10235): Verilog HDL Always Construct warning at Verilog1.v(53): variable "addr" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 53
+Warning (10030): Net "ram.data_a" at Verilog1.v(46) has no driver or initial value, using a default initial value '0' File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 46
+Warning (10030): Net "ram.waddr_a" at Verilog1.v(46) has no driver or initial value, using a default initial value '0' File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 46
+Warning (10030): Net "ram.we_a" at Verilog1.v(46) has no driver or initial value, using a default initial value '0' File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 46
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "ramBlock:RAM|ram:RAM0|ram" is uninferred due to asynchronous read logic File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 46
+Info (278001): Inferred 6 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "fpum:FPU3|Mult0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+    Info (278002): Inferred adder/subtractor megafunction ("lpm_add_sub") from the following logic: "fpua:FPU5|Add3" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "fpum:FPU6|Mult0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "fpum:FPU0|Mult0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+    Info (278002): Inferred adder/subtractor megafunction ("lpm_add_sub") from the following logic: "fpua:FPU2|Add3" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "fpum:FPU9|Mult0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+Info (12130): Elaborated megafunction instantiation "fpum:FPU3|lpm_mult:Mult0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+Info (12133): Instantiated megafunction "fpum:FPU3|lpm_mult:Mult0" with the following parameter: File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+    Info (12134): Parameter "LPM_WIDTHA" = "8"
+    Info (12134): Parameter "LPM_WIDTHB" = "8"
+    Info (12134): Parameter "LPM_WIDTHP" = "16"
+    Info (12134): Parameter "LPM_WIDTHR" = "16"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_0ls.tdf
+    Info (12023): Found entity 1: mult_0ls File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/mult_0ls.tdf Line: 29
+Info (12130): Elaborated megafunction instantiation "fpua:FPU5|lpm_add_sub:Add3" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+Info (12133): Instantiated megafunction "fpua:FPU5|lpm_add_sub:Add3" with the following parameter: File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+    Info (12134): Parameter "LPM_WIDTH" = "8"
+    Info (12134): Parameter "LPM_DIRECTION" = "DEFAULT"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "ONE_INPUT_IS_CONSTANT" = "NO"
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_29i.tdf
+    Info (12023): Found entity 1: add_sub_29i File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/add_sub_29i.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "fpum:FPU6|lpm_mult:Mult0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+Info (12133): Instantiated megafunction "fpum:FPU6|lpm_mult:Mult0" with the following parameter: File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+    Info (12134): Parameter "LPM_WIDTHA" = "4"
+    Info (12134): Parameter "LPM_WIDTHB" = "4"
+    Info (12134): Parameter "LPM_WIDTHP" = "8"
+    Info (12134): Parameter "LPM_WIDTHR" = "8"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_9js.tdf
+    Info (12023): Found entity 1: mult_9js File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/mult_9js.tdf Line: 29
+Info (12130): Elaborated megafunction instantiation "fpum:FPU0|lpm_mult:Mult0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+Info (12133): Instantiated megafunction "fpum:FPU0|lpm_mult:Mult0" with the following parameter: File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+    Info (12134): Parameter "LPM_WIDTHA" = "24"
+    Info (12134): Parameter "LPM_WIDTHB" = "24"
+    Info (12134): Parameter "LPM_WIDTHP" = "48"
+    Info (12134): Parameter "LPM_WIDTHR" = "48"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_1os.tdf
+    Info (12023): Found entity 1: mult_1os File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/mult_1os.tdf Line: 31
+Info (12130): Elaborated megafunction instantiation "fpua:FPU2|lpm_add_sub:Add3" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+Info (12133): Instantiated megafunction "fpua:FPU2|lpm_add_sub:Add3" with the following parameter: File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 130
+    Info (12134): Parameter "LPM_WIDTH" = "24"
+    Info (12134): Parameter "LPM_DIRECTION" = "DEFAULT"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "ONE_INPUT_IS_CONSTANT" = "NO"
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_gai.tdf
+    Info (12023): Found entity 1: add_sub_gai File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/add_sub_gai.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "fpum:FPU9|lpm_mult:Mult0" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+Info (12133): Instantiated megafunction "fpum:FPU9|lpm_mult:Mult0" with the following parameter: File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 78
+    Info (12134): Parameter "LPM_WIDTHA" = "3"
+    Info (12134): Parameter "LPM_WIDTHB" = "3"
+    Info (12134): Parameter "LPM_WIDTHP" = "6"
+    Info (12134): Parameter "LPM_WIDTHR" = "6"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12131): Elaborated megafunction instantiation "fpum:FPU9|lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "fpum:FPU9|lpm_mult:Mult0" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 324
+Info (12131): Elaborated megafunction instantiation "fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "fpum:FPU9|lpm_mult:Mult0" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/multcore.tdf Line: 283
+Info (12131): Elaborated megafunction instantiation "fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "fpum:FPU9|lpm_mult:Mult0" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8mg.tdf
+    Info (12023): Found entity 1: add_sub_8mg File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/add_sub_8mg.tdf Line: 23
+Info (12131): Elaborated megafunction instantiation "fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "fpum:FPU9|lpm_mult:Mult0" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/mpar_add.tdf Line: 138
+Info (12131): Elaborated megafunction instantiation "fpum:FPU9|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "fpum:FPU9|lpm_mult:Mult0" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_9mg.tdf
+    Info (12023): Found entity 1: add_sub_9mg File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/add_sub_9mg.tdf Line: 23
+Info (12131): Elaborated megafunction instantiation "fpum:FPU9|lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "fpum:FPU9|lpm_mult:Mult0" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following LCELL buffer node(s):
+        Warning (14320): Synthesized away node "fpum:FPU6|lpm_mult:Mult0|mult_9js:auto_generated|le5a[4]" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/db/mult_9js.tdf Line: 43
+Warning (12241): 10 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13014): Ignored 196 buffer(s)
+    Info (13016): Ignored 2 CARRY_SUM buffer(s)
+    Info (13019): Ignored 194 SOFT buffer(s)
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "ramBlock:RAM|A[14]" is converted into an equivalent circuit using register "ramBlock:RAM|A[14]~_emulated" and latch "ramBlock:RAM|A[14]~1" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[14]" is converted into an equivalent circuit using register "ramBlock:RAM|B[14]~_emulated" and latch "ramBlock:RAM|B[14]~1" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[13]" is converted into an equivalent circuit using register "ramBlock:RAM|A[13]~_emulated" and latch "ramBlock:RAM|A[13]~5" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[13]" is converted into an equivalent circuit using register "ramBlock:RAM|B[13]~_emulated" and latch "ramBlock:RAM|B[13]~5" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[12]" is converted into an equivalent circuit using register "ramBlock:RAM|A[12]~_emulated" and latch "ramBlock:RAM|A[12]~9" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[12]" is converted into an equivalent circuit using register "ramBlock:RAM|B[12]~_emulated" and latch "ramBlock:RAM|B[12]~9" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[11]" is converted into an equivalent circuit using register "ramBlock:RAM|A[11]~_emulated" and latch "ramBlock:RAM|A[11]~13" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[11]" is converted into an equivalent circuit using register "ramBlock:RAM|B[11]~_emulated" and latch "ramBlock:RAM|B[11]~13" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[10]" is converted into an equivalent circuit using register "ramBlock:RAM|A[10]~_emulated" and latch "ramBlock:RAM|A[10]~17" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[10]" is converted into an equivalent circuit using register "ramBlock:RAM|B[10]~_emulated" and latch "ramBlock:RAM|B[10]~17" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[9]" is converted into an equivalent circuit using register "ramBlock:RAM|A[9]~_emulated" and latch "ramBlock:RAM|A[9]~21" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[9]" is converted into an equivalent circuit using register "ramBlock:RAM|B[9]~_emulated" and latch "ramBlock:RAM|B[9]~21" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[8]" is converted into an equivalent circuit using register "ramBlock:RAM|A[8]~_emulated" and latch "ramBlock:RAM|A[8]~25" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[8]" is converted into an equivalent circuit using register "ramBlock:RAM|B[8]~_emulated" and latch "ramBlock:RAM|B[8]~25" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[7]" is converted into an equivalent circuit using register "ramBlock:RAM|A[7]~_emulated" and latch "ramBlock:RAM|A[7]~29" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[7]" is converted into an equivalent circuit using register "ramBlock:RAM|B[7]~_emulated" and latch "ramBlock:RAM|B[7]~29" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[6]" is converted into an equivalent circuit using register "ramBlock:RAM|A[6]~_emulated" and latch "ramBlock:RAM|A[6]~33" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[6]" is converted into an equivalent circuit using register "ramBlock:RAM|B[6]~_emulated" and latch "ramBlock:RAM|B[6]~33" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[5]" is converted into an equivalent circuit using register "ramBlock:RAM|A[5]~_emulated" and latch "ramBlock:RAM|A[5]~37" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[5]" is converted into an equivalent circuit using register "ramBlock:RAM|B[5]~_emulated" and latch "ramBlock:RAM|B[5]~37" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[4]" is converted into an equivalent circuit using register "ramBlock:RAM|A[4]~_emulated" and latch "ramBlock:RAM|A[4]~41" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[4]" is converted into an equivalent circuit using register "ramBlock:RAM|B[4]~_emulated" and latch "ramBlock:RAM|B[4]~41" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[3]" is converted into an equivalent circuit using register "ramBlock:RAM|A[3]~_emulated" and latch "ramBlock:RAM|A[3]~45" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[3]" is converted into an equivalent circuit using register "ramBlock:RAM|B[3]~_emulated" and latch "ramBlock:RAM|B[3]~45" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[2]" is converted into an equivalent circuit using register "ramBlock:RAM|A[2]~_emulated" and latch "ramBlock:RAM|A[2]~49" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[2]" is converted into an equivalent circuit using register "ramBlock:RAM|B[2]~_emulated" and latch "ramBlock:RAM|B[2]~49" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[1]" is converted into an equivalent circuit using register "ramBlock:RAM|A[1]~_emulated" and latch "ramBlock:RAM|A[1]~53" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[1]" is converted into an equivalent circuit using register "ramBlock:RAM|B[1]~_emulated" and latch "ramBlock:RAM|B[1]~53" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[0]" is converted into an equivalent circuit using register "ramBlock:RAM|A[0]~_emulated" and latch "ramBlock:RAM|A[0]~57" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[0]" is converted into an equivalent circuit using register "ramBlock:RAM|B[0]~_emulated" and latch "ramBlock:RAM|B[0]~57" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[30]" is converted into an equivalent circuit using register "ramBlock:RAM|A[30]~_emulated" and latch "ramBlock:RAM|A[30]~61" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[30]" is converted into an equivalent circuit using register "ramBlock:RAM|B[30]~_emulated" and latch "ramBlock:RAM|B[30]~61" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[29]" is converted into an equivalent circuit using register "ramBlock:RAM|A[29]~_emulated" and latch "ramBlock:RAM|A[29]~65" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[29]" is converted into an equivalent circuit using register "ramBlock:RAM|B[29]~_emulated" and latch "ramBlock:RAM|B[29]~65" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[28]" is converted into an equivalent circuit using register "ramBlock:RAM|A[28]~_emulated" and latch "ramBlock:RAM|A[28]~69" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[28]" is converted into an equivalent circuit using register "ramBlock:RAM|B[28]~_emulated" and latch "ramBlock:RAM|B[28]~69" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[27]" is converted into an equivalent circuit using register "ramBlock:RAM|A[27]~_emulated" and latch "ramBlock:RAM|A[27]~73" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[27]" is converted into an equivalent circuit using register "ramBlock:RAM|B[27]~_emulated" and latch "ramBlock:RAM|B[27]~73" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[26]" is converted into an equivalent circuit using register "ramBlock:RAM|A[26]~_emulated" and latch "ramBlock:RAM|A[26]~77" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[26]" is converted into an equivalent circuit using register "ramBlock:RAM|B[26]~_emulated" and latch "ramBlock:RAM|B[26]~77" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[25]" is converted into an equivalent circuit using register "ramBlock:RAM|A[25]~_emulated" and latch "ramBlock:RAM|A[25]~81" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[25]" is converted into an equivalent circuit using register "ramBlock:RAM|B[25]~_emulated" and latch "ramBlock:RAM|B[25]~81" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[24]" is converted into an equivalent circuit using register "ramBlock:RAM|A[24]~_emulated" and latch "ramBlock:RAM|A[24]~85" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[24]" is converted into an equivalent circuit using register "ramBlock:RAM|B[24]~_emulated" and latch "ramBlock:RAM|B[24]~85" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[23]" is converted into an equivalent circuit using register "ramBlock:RAM|A[23]~_emulated" and latch "ramBlock:RAM|A[23]~89" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[23]" is converted into an equivalent circuit using register "ramBlock:RAM|B[23]~_emulated" and latch "ramBlock:RAM|B[23]~89" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[22]" is converted into an equivalent circuit using register "ramBlock:RAM|A[22]~_emulated" and latch "ramBlock:RAM|A[22]~93" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[22]" is converted into an equivalent circuit using register "ramBlock:RAM|B[22]~_emulated" and latch "ramBlock:RAM|B[22]~93" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[21]" is converted into an equivalent circuit using register "ramBlock:RAM|A[21]~_emulated" and latch "ramBlock:RAM|A[21]~97" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[21]" is converted into an equivalent circuit using register "ramBlock:RAM|B[21]~_emulated" and latch "ramBlock:RAM|B[21]~97" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[20]" is converted into an equivalent circuit using register "ramBlock:RAM|A[20]~_emulated" and latch "ramBlock:RAM|A[20]~101" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[20]" is converted into an equivalent circuit using register "ramBlock:RAM|B[20]~_emulated" and latch "ramBlock:RAM|B[20]~101" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[19]" is converted into an equivalent circuit using register "ramBlock:RAM|A[19]~_emulated" and latch "ramBlock:RAM|A[19]~105" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[19]" is converted into an equivalent circuit using register "ramBlock:RAM|B[19]~_emulated" and latch "ramBlock:RAM|B[19]~105" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[18]" is converted into an equivalent circuit using register "ramBlock:RAM|A[18]~_emulated" and latch "ramBlock:RAM|A[18]~109" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[18]" is converted into an equivalent circuit using register "ramBlock:RAM|B[18]~_emulated" and latch "ramBlock:RAM|B[18]~109" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[17]" is converted into an equivalent circuit using register "ramBlock:RAM|A[17]~_emulated" and latch "ramBlock:RAM|A[17]~113" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[17]" is converted into an equivalent circuit using register "ramBlock:RAM|B[17]~_emulated" and latch "ramBlock:RAM|B[17]~113" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[16]" is converted into an equivalent circuit using register "ramBlock:RAM|A[16]~_emulated" and latch "ramBlock:RAM|A[16]~117" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[16]" is converted into an equivalent circuit using register "ramBlock:RAM|B[16]~_emulated" and latch "ramBlock:RAM|B[16]~117" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[15]" is converted into an equivalent circuit using register "ramBlock:RAM|A[15]~_emulated" and latch "ramBlock:RAM|A[15]~121" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[15]" is converted into an equivalent circuit using register "ramBlock:RAM|B[15]~_emulated" and latch "ramBlock:RAM|B[15]~121" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|B[31]" is converted into an equivalent circuit using register "ramBlock:RAM|B[31]~_emulated" and latch "ramBlock:RAM|B[31]~125" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Warning (13310): Register "ramBlock:RAM|A[31]" is converted into an equivalent circuit using register "ramBlock:RAM|A[31]~_emulated" and latch "ramBlock:RAM|A[31]~125" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 4
+    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 5
+    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 6
+    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 7
+    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 8
+    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 9
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 10
+Info (286030): Timing-Driven Synthesis is running
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register ramBlock:RAM|addr[4] will power up to Low File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Critical Warning (18010): Register ramBlock:RAM|addr[0] will power up to Low File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Critical Warning (18010): Register ramBlock:RAM|addr[1] will power up to Low File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Critical Warning (18010): Register ramBlock:RAM|addr[2] will power up to Low File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+    Critical Warning (18010): Register ramBlock:RAM|addr[3] will power up to Low File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/Verilog1.v Line: 31
+Info (144001): Generated suppressed messages file C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 6 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 11
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 11
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 13
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 13
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 13
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.v Line: 13
+Info (21057): Implemented 7277 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 58 output pins
+    Info (21061): Implemented 7198 logic cells
+    Info (21062): Implemented 8 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 156 warnings
+    Info: Peak virtual memory: 4868 megabytes
+    Info: Processing ended: Wed Jun 14 10:15:41 2023
+    Info: Elapsed time: 00:01:21
+    Info: Total CPU time (on all processors): 00:01:19
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/dillo/OneDrive/Desktop/EEC 180/Lab 6/lab6/lab6.map.smsg.
+
+
